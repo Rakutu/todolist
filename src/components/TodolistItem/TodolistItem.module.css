@@ -1,0 +1,13 @@
+.todoItem {
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.important {
+    font-weight: bold;
+    color: blue;
+}

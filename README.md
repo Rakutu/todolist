@@ -1,3 +1,3 @@
-# todolist on React
+My first React App
 
-My first React app
+Todo list
