@@ -1,6 +1,7 @@
 import React from "react";
 
 const ItemStatusFilter = ({ filter, onFilterChange }) => {
+    console.log(filter)
 
     const buttons = [
         { name: 'all', label: 'All' },
@@ -13,7 +14,7 @@ const ItemStatusFilter = ({ filter, onFilterChange }) => {
         const isActive = filter === name;
         const activeClass = isActive ? 'btn-primary' : 'btn-light';
         return (
-            <button type="button" key={name} className={`btn border border-dark ${activeClass}`} onClick={() => onFilterChange(name)}>{name}</button>
+            <button type="button" key={name} className={`btn border border-dark ${activeClass}`} onClick={() => onFilterChange(name)}>{label}</button>
         )
     })
     return (

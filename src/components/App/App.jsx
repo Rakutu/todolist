@@ -19,23 +19,29 @@ const newItem = (label) => {
 const todos = [
 	newItem('Drink cofee'),
 	newItem('Build React app'),
-	newItem('Byu LoL skin'),
 ]
 
 
 const App = () => {
-    const [todoList, setList] = React.useState(todos);
-    const [term, setTerm] = React.useState('');
-    const [filterState, setFilter] = React.useState('all');
+    const initialTodo = JSON.parse(localStorage.getItem('todolist')) || todos;
+    const initialTerm = localStorage.getItem('term') || '';
+    const initialFilter = JSON.parse(localStorage.getItem('filter')) || 'all';
+
+    const [todoList, setList] = React.useState(initialTodo);
+    const [term, setTerm] = React.useState(initialTerm);
+    const [filterState, setFilter] = React.useState(initialFilter);
 
     const onDelete = (id) => {
-        setList(todoList.filter(todo => todo.id !== id))
+        const newList = todoList.filter(todo => todo.id !== id)
+        setList(newList)
+        localStorage.setItem('todolist', JSON.stringify(newList))
     }
 
     const addTodo = (text) => {
         const newTodoItem = newItem(text);
         const newList = [...todoList, newTodoItem]
         setList(newList)
+        localStorage.setItem('todolist', JSON.stringify(newList))
     }
 
     const togglePropperty = (arr, id, propName) => {
@@ -43,6 +49,7 @@ const App = () => {
         const newList = [...arr];
         newList[index][propName] = !newList[index][propName];
         setList(newList)
+        localStorage.setItem('todolist', JSON.stringify(newList))
     }
 
     const search = (items, term) => {
@@ -63,25 +70,25 @@ const App = () => {
 
     const onSearchChange = (term) => {
         setTerm(term)
+        localStorage.setItem('term', term)
     }
 
     const onFilterChange = (filter) => {
         setFilter(filter)
+        localStorage.setItem('filter', JSON.stringify(filter))
     }
 
     const visibleItems = filter(search(todoList, term), filterState);
 
     const onToggleDone = (id) => togglePropperty(todoList, id, 'done')
-
     const onToggleImportant = (id) => togglePropperty(todoList, id, 'important')
-
     let doneCount = todoList.filter(todo => todo.done === true).length
     let todoCount = todoList.length - doneCount;
 
     return (
         <div>
             <AppHeader todo={todoCount} done={doneCount} />
-            <SearchPanel onSearchChange={onSearchChange} filter={filterState} onFilterChange={onFilterChange} />
+            <SearchPanel onSearchChange={onSearchChange} filter={filterState} onFilterChange={onFilterChange} term={term}/>
             <Todolist todos={visibleItems} onDelete={onDelete} onToggleDone={onToggleDone} onToggleImportant={onToggleImportant}/>
             <AddTodoForm addTodo={addTodo} />
         </div>
