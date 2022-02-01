@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Rakutu/todolist/static/css/main.64cc844b.css",
-    "main.js": "/Rakutu/todolist/static/js/main.be4e9f78.js",
+    "main.css": "/Rakutu/todolist/static/css/main.12d3914b.css",
+    "main.js": "/Rakutu/todolist/static/js/main.de740776.js",
     "index.html": "/Rakutu/todolist/index.html",
-    "main.64cc844b.css.map": "/Rakutu/todolist/static/css/main.64cc844b.css.map",
-    "main.be4e9f78.js.map": "/Rakutu/todolist/static/js/main.be4e9f78.js.map"
+    "main.12d3914b.css.map": "/Rakutu/todolist/static/css/main.12d3914b.css.map",
+    "main.de740776.js.map": "/Rakutu/todolist/static/js/main.de740776.js.map"
   },
   "entrypoints": [
-    "static/css/main.64cc844b.css",
-    "static/js/main.be4e9f78.js"
+    "static/css/main.12d3914b.css",
+    "static/js/main.de740776.js"
   ]
 }
